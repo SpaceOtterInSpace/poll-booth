@@ -12,12 +12,24 @@ Polls.allow({
 
 Votes.allow({
   insert: function(userId, doc){
-    return true;
+    if (! userId) {
+      throw new Meteor.Error('not-authorized');
+    } else {
+      return true;
+    }
   },
   update: function(userId, doc, fields, modifier){
-    return true;
+    if (! userId) {
+      throw new Meteor.Error('not-authorized');
+    } else {
+      return true;
+    }
   },
   remove: function(userId, doc){
-    return true;
+    if (! userId) {
+      throw new Meteor.Error('not-authorized');
+    } else {
+      return true;
+    }
   }
 });
